@@ -29,3 +29,7 @@ class UserProfile(models.Model):
 
     def _str_(self):
         return self.full_name if self.full_name else self.user.username
+
+
+
+
