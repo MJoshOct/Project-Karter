@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Forum</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .post {
+      background: #f9f9f9;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border-left: 4px solid #007bff;
+    }
+    .post h4 {
+      margin: 0 0 10px;
+    }
+    .post p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Community Forum</h2>
+    <form id="forumForm">
+      <label for="username">Your Name</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="topic">Topic Title</label>
+      <input type="text" id="topic" name="topic" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Post</button>
+    </form>
+
+    <div id="postsContainer"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("forumForm");
+    const postsContainer = document.getElementById("postsContainer");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const topic = document.getElementById("topic").value;
+      const message = document.getElementById("message").value;
+
+      const post = document.createElement("div");
+      post.className = "post";
+      post.innerHTML = `<h4>${topic} — <em>${username}</em></h4><p>${message}</p>`;
+
+      postsContainer.prepend(post);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
