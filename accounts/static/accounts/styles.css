@@ -1,0 +1,62 @@
+/* General Body Style */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    border-radius: 0 0 12px 12px;
+}
+
+/* Card Forms */
+.card {
+    border-radius: 12px;
+    border: none;
+    background: #fff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Labels */
+.form-label {
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Links */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Messages */
+.alert {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Profile */
+.profile-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+}

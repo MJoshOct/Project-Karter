@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "forum"
+    "forum",
+    "accounts",
 ]
+
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/forum/"   
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -121,3 +126,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
