@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "forum",
     "accounts",
+    "home",
 ]
 
 LOGIN_URL = "/accounts/login/"
