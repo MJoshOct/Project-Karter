@@ -35,9 +35,7 @@ class Question(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, 
         related_name="questions", 
-        null=True, 
-        blank=True
-        )#temp till login-service is added
+        )
     tags = models.ManyToManyField(
         Tag, 
         related_name="questions", 
@@ -71,9 +69,7 @@ class Answer(models.Model):
     author = models.ForeignKey(
         User, 
         on_delete=models.CASCADE, 
-        related_name="answers",
-        null=True, 
-        blank=True
+        related_name="answers"
         )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -88,9 +84,7 @@ class Comment(models.Model):
     author = models.ForeignKey(
         User, 
         on_delete=models.CASCADE, 
-        related_name="comments",
-        null=True, 
-        blank=True
+        related_name="comments"
         )
     created_at = models.DateTimeField(auto_now_add=True)
     # Generic relation (can comment on Question or Answer)
