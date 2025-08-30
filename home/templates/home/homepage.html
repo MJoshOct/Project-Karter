@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BarterHub</title>
+  <link rel="stylesheet" href="{% static 'home/style.css' %}">
+</head>
+<body>
+
+  <header>
+    <div class="logo">karterHub</div>&nbsp;
+    <br>
+    
+    <input type="search" placeholder="Search items...">
+    <button><a href="user.html"><div class="profile-icon">👤</div></a></button>
+  </header>
+    <a href="authentication.html">login</a>
+    <nav class="primary-nav">
+    <button class="nav-button" id="buyExchangeBtn" class="btn"><a href="buy.html">Buy/Exchange</a></button>
+    <button class="nav-button" id="sellBtn"><a href="sell.html">Sell</a></button>
+  </nav>
+   <nav class="secondary-nav">
+   
+    <button class="nav-button" id="requestRentBtn"><a href="requestRent.html">Request/Rent</a></button>
+
+    <button class="nav-button" id="forumBtn"><a href="{% url 'question_list' %}">Forum</a></button>
+  </nav>
+
+  <section class="item-list">
+    <h3 class="style">suggested items -</h3>
+    <div class="item-card">
+      <h3>Wooden Chair</h3>
+      <p>Sturdy and vintage. Looking to trade for books.</p>
+    </div>
+    <div class="item-card">
+      <h3>Old Guitar</h3>
+      <p>Needs tuning. Open to barter for electronics.</p>
+    </div>
+     
+  </section>
+
+  <button class="cart-icon">🛒</button>
+  
+   
+  
+  <button class="to-top" onclick="scrollToTop()"></button>
+
+  
+
+  <script src="{% static 'js/funct.js' %}"></script>
+</body>
+</html>
