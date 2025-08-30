@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Question
-from .forms import QuestionForm
+from .forms import QuestionForm,AnswerForm
 
 # Create your views here.
 
@@ -16,7 +16,10 @@ def question_detail(request, slug):
         answer_form = AnswerForm(request.POST)
         if answer_form.is_valid():
             answer = answer_form.save(commit=False)
-            answer.author = request.user
+            if request.user.is_authenticated:
+                answer.author = request.user
+            else:
+                answer.author = None
             answer.question = question
             answer.save()
             return redirect("question_detail", slug=question.slug)
@@ -34,7 +37,10 @@ def ask_question(request):
         form = QuestionForm(request.POST)
         if form.is_valid():
             question = form.save(commit=False)
-            question.author = request.user  # attach the logged-in user
+           # question.author = request.user  # attach the logged-in user
+            # only set author if logged in
+            if request.user.is_authenticated:
+                question.author = request.user
             question.save()
             form.save_m2m()  # for tags
             return redirect("question_detail", slug=question.slug)

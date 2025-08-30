@@ -5,8 +5,15 @@ from django.utils.text import slugify
 # Create your models here.
 
 class Tag(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(max_length=60, unique=True, blank=True)
+    name = models.CharField(
+        max_length=50, 
+        unique=True
+        )
+    slug = models.SlugField(
+        max_length=60, 
+        unique=True, 
+        blank=True
+        )
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -19,10 +26,22 @@ class Tag(models.Model):
 
 class Question(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=300, unique=True, blank=True)
+    slug = models.SlugField(
+        max_length=300, 
+        unique=True, 
+        blank=True)
     body = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="questions")
-    tags = models.ManyToManyField(Tag, related_name="questions", blank=True)
+    #author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="questions")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, 
+        related_name="questions", 
+        null=True, 
+        blank=True
+        )#temp till login-service is added
+    tags = models.ManyToManyField(
+        Tag, 
+        related_name="questions", 
+        blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     views = models.PositiveIntegerField(default=0)
@@ -43,9 +62,19 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="answers")
+    question = models.ForeignKey(
+        Question, 
+        on_delete=models.CASCADE, 
+        related_name="answers"
+        )
     body = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="answers")
+    author = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name="answers",
+        null=True, 
+        blank=True
+        )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_accepted = models.BooleanField(default=False)
@@ -56,11 +85,30 @@ class Answer(models.Model):
 
 class Comment(models.Model):
     body = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name="comments",
+        null=True, 
+        blank=True
+        )
     created_at = models.DateTimeField(auto_now_add=True)
     # Generic relation (can comment on Question or Answer)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="comments", null=True, blank=True)
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name="comments", null=True, blank=True)
+    question = models.ForeignKey(
+        Question, 
+        on_delete=models.CASCADE, 
+        related_name="comments", 
+        null=True, 
+        blank=True
+        )
+    
+    answer = models.ForeignKey(
+        Answer, 
+        on_delete=models.CASCADE, 
+        related_name="comments", 
+        null=True, 
+        blank=True
+        )
 
     def __str__(self):
         return f"Comment by {self.author}"
@@ -71,9 +119,25 @@ class Vote(models.Model):
         (1, "Upvote"),
         (-1, "Downvote"),
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votes")
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="votes", null=True, blank=True)
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name="votes", null=True, blank=True)
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name="votes"
+        )
+    question = models.ForeignKey(
+        Question, 
+        on_delete=models.CASCADE, 
+        related_name="votes", 
+        null=True, 
+        blank=True
+        )
+    answer = models.ForeignKey(
+        Answer, 
+        on_delete=models.CASCADE, 
+        related_name="votes", 
+        null=True,
+        blank=True
+        )
     value = models.SmallIntegerField(choices=VOTE_TYPES)
 
     class Meta:
