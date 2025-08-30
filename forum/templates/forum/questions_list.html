@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Questions</title>
+</head>
+<body>
+    <h1>All Questions</h1>
+    <a href="{% url 'ask_question' %}">Ask a Question</a>
+    <ul>
+      {% for q in questions %}
+        <li>
+          <a href="{% url 'question_detail' q.slug %}">{{ q.title }}</a>
+          ({{ q.answers.count }} answers)
+        </li>
+      {% empty %}
+        <li>No questions yet.</li>
+      {% endfor %}
+    </ul>
+</body>
+</html>

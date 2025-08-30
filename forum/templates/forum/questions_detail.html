@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ question.title }}</title>
+</head>
+<body>
+    <h1>{{ question.title }}</h1>
+    <p>{{ question.body }}</p>
+    <p><strong>Asked by:</strong> {{ question.author }}</p>
+
+    <hr>
+    <h2>Answers</h2>
+    <ul>
+      {% for ans in question.answers.all %}
+        <li>{{ ans.body }} - <em>by {{ ans.author }}</em></li>
+      {% empty %}
+        <li>No answers yet. Be the first!</li>
+      {% endfor %}
+    </ul>
+
+    <hr>
+    <h2>Post an Answer</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ answer_form.as_p }}
+        <button type="submit">Submit Answer</button>
+    </form>
+</body>
+</html>
