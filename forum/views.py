@@ -11,15 +11,13 @@ def question_list(request):
 def question_detail(request, slug):
     question = get_object_or_404(Question, slug=slug)
 
-    # Handle posting an answer
     if request.method == "POST":
+        if not request.user.is_authenticated:
+            return redirect("login")  # or settings.LOGIN_URL
         answer_form = AnswerForm(request.POST)
         if answer_form.is_valid():
             answer = answer_form.save(commit=False)
-            if request.user.is_authenticated:
-                answer.author = request.user
-            else:
-                answer.author = None
+            answer.author = request.user
             answer.question = question
             answer.save()
             return redirect("question_detail", slug=question.slug)
@@ -32,15 +30,13 @@ def question_detail(request, slug):
         {"question": question, "answer_form": answer_form},
     )
 
+
 def ask_question(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
             question = form.save(commit=False)
-           # question.author = request.user  # attach the logged-in user
-            # only set author if logged in
-            if request.user.is_authenticated:
-                question.author = request.user
+            question.author = request.user  # safe, since user is logged in
             question.save()
             form.save_m2m()  # for tags
             return redirect("question_detail", slug=question.slug)
