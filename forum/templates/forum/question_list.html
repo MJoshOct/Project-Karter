@@ -3,21 +3,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Forum</title>
+    <title>Forum - Questions</title>
     <link rel="stylesheet" href="{% static 'forum/style.css' %}">
 </head>
 <body>
-    <h1>All Questions</h1>
-    <a href="{% url 'ask_question' %}">Ask a Question</a>
-    <ul>
-      {% for q in questions %}
-        <li>
-          <a href="{% url 'question_detail' q.slug %}">{{ q.title }}</a>
-          ({{ q.answers.count }} answers)
-        </li>
-      {% empty %}
-        <li>No questions yet.</li>
-      {% endfor %}
-    </ul>
+<header>
+    <h1>Forum Questions</h1>
+    <a href="{% url 'homepage' %}" class="btn">🏠 Home</a>
+    <a href="{% url 'ask_question' %}" class="btn">➕ Ask a Question</a>
+</header>
+
+<div class="container">
+    {% if questions %}
+        <ul class="question-list">
+            {% for question in questions %}
+                <li>
+                    <a href="{% url 'question_detail' question.slug%}" >{{ question.title }}</a><br>
+                    <small>Asked by {{ question.user }} on {{ question.created_at|date:"M d, Y H:i" }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No questions have been asked yet.</p>
+    {% endif %}
+</div>
 </body>
 </html>
+
