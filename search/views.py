@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.models import Post, Category   
+#from blog.models import Post, Category   
 
 def search(request):
     query = request.GET.get("q")
