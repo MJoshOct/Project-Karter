@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "home",
     "profile",
     "search",
+    "rent",
 ]
 
 LOGIN_URL = "/accounts/login/"
