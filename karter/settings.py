@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-dh=*vtcwi#aal6-(=uoswja@hzh=76@afns45-r@7vl5rl+p7$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]", "*"]
+
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     "forum",
     "accounts",
     "home",
+    "profile",
 ]
 
 LOGIN_URL = "/accounts/login/"
