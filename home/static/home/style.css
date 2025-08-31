@@ -2,8 +2,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  color: #222;
+  background: #dcdcdc;
+  color: #000000;
 }
 
 /* Top Navbar */
@@ -11,15 +11,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #000;
+  background: #0c0c0c;
   padding: 10px 20px;
 }
 
 .logo {
-  font-size: 20px;
+    font-size: 30px;
   font-weight: bold;
-  color: #fff;
-}
+  color: #030303;
+  }
 
 .search-bar {
   flex: 1;
@@ -45,7 +45,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
-  background: #1e40af;
+  background: #22231d;
   padding: 20px 0;
 }
 

@@ -14,7 +14,7 @@ def homepage(request):
         suggestions_qs = suggestions_qs.exclude(id__in=results.values_list("id", flat=True))
 
     # --- Suggested (randomized, max 10) ---
-    suggested_items = list(suggestions_qs.order_by("?")[:10])
+    suggested_items = list(suggestions_qs.order_by("?")[:6])
 
     return render(
         request,
