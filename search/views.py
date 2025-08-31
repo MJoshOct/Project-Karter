@@ -1,56 +1,27 @@
+# search/views.py
+from django.db.models import Q
 from django.shortcuts import render
-#from blog.models import Post, Category   
+# from sell.models import Item    
+from forum.models import Question
+   
 
 def search(request):
-    query = request.GET.get("q")
+    
+    query = request.GET.get("q", "").strip()
     results = []
-    categories = Category.objects.all()   
+    search_type = request.GET.get("type", "forum") 
+    
 
     if query:
-        results = Post.objects.filter(
-            title__icontains=query
-        ) | Post.objects.filter(
-            body__icontains=query
-        )
-
-    return render(
-        request,
-        "search/results.html",
-        {
-            "results": results,
-            "query": query,
-            "categories": categories,
-        },
-    )
+        if search_type == "forum":
+            results = Question.objects.filter(
+                Q(title__icontains=query) | Q(body__icontains=query)
+            )
+            context_type = "forum"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return render(request, "search/results.html", {
+        "query": query,
+        "results": results,
+        "search_type": search_type,
+    })

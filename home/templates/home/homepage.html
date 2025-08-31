@@ -13,7 +13,7 @@
     <div class="logo">karter</div>&nbsp;
     <br>
     
-    <input type="search" placeholder="Search items..." href="{% url 'search:search_results' %}">
+    <input type="search" placeholder="Search items..." href="{% url 'search:search' %}">
     <button>
     {% if user.is_authenticated %}
         <a href="{% url 'profile_view' %}">👤 Profile</a>
@@ -32,7 +32,10 @@
    
     <button class="nav-button" id="requestRentBtn"><a href="requestRent.html">Request/Rent</a></button>
 
-    <button class="nav-button" id="forumBtn"><a href="{% url 'question_list' %}">Forum</a></button>
+  <button class="nav-button" id="forumBtn">
+  <a href="{% url 'forum:question_list' %}">Forum</a>
+  </button>
+
   </nav>
 
   <section class="item-list">
