@@ -4,17 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BarterHub</title>
+  <title>KarterHub</title>
   <link rel="stylesheet" href="{% static 'home/style.css' %}">
 </head>
 <body>
 
   <header>
-    <div class="logo">karterHub</div>&nbsp;
+    <div class="logo">karter</div>&nbsp;
     <br>
     
     <input type="search" placeholder="Search items...">
-    <button><a href="user.html"><div class="profile-icon">👤</div></a></button>
+    <button>
+    {% if user.is_authenticated %}
+        <a href="{% url 'profile_view' %}">👤 Profile</a>
+    {% else %}
+        <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+    </button>
+
   </header>
     <a href="authentication.html">login</a>
     <nav class="primary-nav">
