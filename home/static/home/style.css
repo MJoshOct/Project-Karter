@@ -58,8 +58,9 @@ header input {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      background-color: #1642b0;
-      padding: 10px 0;
+      background-color: #2f4ca4;
+      padding: 10px 5px;
+      gap: 20px;
     }
 
 
