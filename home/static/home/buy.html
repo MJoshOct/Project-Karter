@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ product.name }}</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 1000px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; }
+    .product { display: flex; gap: 20px; flex-wrap: wrap; }
+    .product img { width: 250px; border-radius: 8px; }
+    .details { flex: 1; }
+    .price { color: #28a745; font-size: 1.2em; margin: 10px 0; }
+    .stock { color: #555; margin-bottom: 10px; }
+    button { padding: 10px 20px; background: #4073aa; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    .reviews { margin-top: 40px; }
+    .review { background: #f1f1f1; padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+    .suggested { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+    .suggested-card { background: #fafafa; padding: 10px; border-radius: 8px; width: 250px; text-align: center; }
+    .suggested-card img { width: 100%; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="product">
+      <div class="actions">
+        <a href="/" class="back-btn">← Back to Homepage</a>
+      </div>
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <div class="details">
+        <h2>{{ product.name }}</h2>
+        <p class="price">₹{{ product.price }}</p>
+        <p class="stock">In Stock: {{ product.stock }} units</p>
+
+        <form method="post">
+          {% csrf_token %}
+          <label for="qty">Buy Quantity:</label>
+          <select name="quantity" id="qty">
+            {% for i in 1|get_range:product.stock %}
+              <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" name="buy">Buy Now</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="reviews">
+      <h3>Customer Reviews</h3>
+      {% for review in reviews %}
+        <div class="review">
+          <strong>{{ review.username }}:</strong> {{ review.message }}
+        </div>
+      {% empty %}
+        <p>No reviews yet. Be the first!</p>
+      {% endfor %}
+
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Your Name" required>
+        <textarea name="message" rows="3" placeholder="Write your review..." required></textarea>
+        <button type="submit" name="review">Add Review</button>
+      </form>
+    </div>
+
+    <div class="suggested-section">
+      <h3>Suggested Alternatives</h3>
+      <div class="suggested">
+        {% for item in suggestions %}
+          <div class="suggested-card">
+            <img src="{{ item.image.url }}" alt="{{ item.name }}">
+            <h4>{{ item.name }}</h4>
+            <p>₹{{ item.price }}</p>
+            <a href="{% url 'buy' item.id %}"><button>View</button></a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KarterHub</title>
+  <title>Karter</title>
   <link rel="stylesheet" href="{% static 'home/style.css' %}">
 </head>
 <body>
@@ -29,11 +29,12 @@
   <!-- Navigation Menu as Buttons -->
   <nav class="main-nav">
     <div class="nav-buttons">
-    <a href="{buy.html" class="nav-btn">Buy/Exchange</a>
+    <a href="{% static 'home/buy.html' %}" class="nav-btn">Exchange</a>
     <a href="{% url 'sell' %}" class="nav-btn">Sell</a>
-    <a href="rent.html" class="nav-btn">Request/Rent</a>
+    <a href="{% static 'home/rent.html' %}" class="nav-btn">Request/Rent</a>
     <a href="{% url 'forum:question_list' %}" class="nav-btn">Forum</a>
   </div>
+  <!-- Search Results -->
   <!-- Search Results -->
   {% if search_results %}
   <section class="items-section">
@@ -49,7 +50,7 @@
           <p class="price">₹{{ item.price }}</p>
         {% endif %}
         <p class="desc">{{ item.description|truncatewords:15 }}</p>
-        <button class="view-btn">View Details</button>
+        <a href="{% url 'product_detail' item.pk %}" class="view-btn">View Details</a>
       </div>
       {% endfor %}
     </div>
@@ -70,7 +71,7 @@
           <p class="price">₹{{ item.price }}</p>
         {% endif %}
         <p class="desc">{{ item.description|truncatewords:15 }}</p>
-        <button class="view-btn">View Details</button>
+        <a href="{% url 'product_detail' item.pk %}" class="view-btn">View Details</a>
       </div>
       {% endfor %}
     </div>
@@ -78,7 +79,16 @@
 
   <!-- Floating Buttons -->
   <button class="cart-icon">🛒</button>
-  <button class="to-top" onclick="scrollToTop()">⬆</button>
+  <button class="to-top" onclick="scrollToTop()">⬆ Top</button>
+  <script>
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+  </script>
+
 
   <script src="{% static 'js/funct.js' %}"></script>
 </body>

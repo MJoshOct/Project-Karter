@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductForm
 from .models import Product
 import random
@@ -18,11 +18,11 @@ def sell_success(request):
     return render(request, "sell/sell_success.html")
 
 def home(request):
-    # Suggested items (randomized)
+    
     all_items = list(Product.objects.all())
     suggested_items = random.sample(all_items, min(len(all_items), 10))
 
-    # Handle search
+    
     query = request.GET.get("q")
     results = []
     if query:
@@ -33,3 +33,7 @@ def home(request):
         "results": results,
         "query": query,
     })
+
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, "home/product_detail.html", {"product": product})

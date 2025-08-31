@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coming Soon - Karter</title>
+
+  <!-- Option 1: Meta refresh -->
+  <meta http-equiv="refresh" content="5; url={% url 'home' %}">
+
+  <!-- Optional CSS -->
+  <link rel="stylesheet" href="{% static 'home/style.css' %}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #222;
+      color: #fff;
+      flex-direction: column;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Coming Soon!</h1>
+  <p>You will be redirected shortly...</p>
+
+  <!-- Option 2: JavaScript redirect (alternative) -->
+  <script>
+    // Redirect after 5 seconds
+    setTimeout(function() {
+      window.location.href = "{% url 'home' %}";
+    }, 5000);
+  </script>
+</body>
+</html>
