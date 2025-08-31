@@ -1,61 +1,64 @@
-/* General page styling */
+/* style2.css - Modern Cards */
 body {
-    font-family: Arial, sans-serif;
-    background: #f3efef25;
-    margin:10;
-    padding: 10px;
-    color:rgb(15, 103, 119);
+    font-family: "Segoe UI", sans-serif;
+    background: #2c2c2c;
+    color: #e0e0e0;
+    margin: 0;
 }
 
-/* Navbar or header */
-head {
-    background: #007bff;
-    color: rgb(201, 189, 189);
-    padding: 15px;
-    text-align: center;
+/* Header */
+header {
+    background: #1e1e1e;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-header{
-    color:darkcyan;
-    background-color: rgb(201, 198, 193);
-    padding:20px;
-    margin:10px;
+header h1, header h2 {
+    margin: 0;
+    color: #ffffff;
 }
-/* Buttons */
-a.btn, button {
-    background: #007bff;
-    color: white;
-    padding: 8px 14px;
+
+/* Nav / buttons */
+a, .btn {
+    color: #ffffff;
+    background: #4da6ff;
+    padding: 0.5rem 1rem;
     border-radius: 6px;
     text-decoration: none;
-    align-content:center ;
-    transition: background 0.3s ease;
+    font-weight: bold;
+    transition: 0.2s;
 }
-button[type="submit"] {
-  background-color: #007BFF;       
-  color: white;                    
-  border: none;                    
-  padding: 10px 20px;              
-  font-size: 16px;                 
-  border-radius: 5px;              
-  cursor: pointer;                 
-  transition: background-color 0.3s ease;
+a:hover, .btn:hover {
+    background: #3385cc;
 }
 
-button[type="submit"]:hover {
-  background-color: #0056b3;       
+/* Forms */
+input, textarea, button {
+    background: #3a3a3a;
+    border: none;
+    color: #ffffff;
+    padding: 0.6rem;
+    border-radius: 6px;
+    margin: 0.3rem 0;
+}
+button {
+    background: #4dff88;
+    color: #1e1e1e;
+    font-weight: bold;
+}
+button:hover {
+    background: #33cc66;
 }
 
-
-a.btn:hover, button:hover {
-    background: #827474;
-}
-
-/* Containers */
+/* Card Containers */
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(158, 155, 155, 0.1);
+    padding: 2rem;
+}
+.question-list li, .search-results li, .result-item {
+    background: #3a3a3a;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.8rem 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }

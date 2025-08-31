@@ -9,55 +9,76 @@
 </head>
 <body>
 
-  <header>
-    <div class="logo">karter</div>&nbsp;
-    <br>
-    
-    <input type="search" placeholder="Search items..." href="{% url 'search:search' %}">
-    <button>
-    {% if user.is_authenticated %}
-        <a href="{% url 'profile_view' %}">👤 Profile</a>
-    {% else %}
-        <a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
-    </button>
+  <!-- Top Header -->
+  <header class="site-header">
+    <div class="logo">Karter</div>
+    <form class="search-form" method="get" action="{% url 'search:search' %}">
+      <input type="search" name="q" placeholder="Search items...">
+      <button type="submit">Search</button>
+    </form>
 
+    <div class="user-links">
+      {% if user.is_authenticated %}
+        <button><a href="{% url 'profile_view' %}">Profile</a></button>
+      {% else %}
+        <button><a href="{% url 'signup' %}">Sign Up</a></button>
+      {% endif %}
+    </div>
   </header>
-    <a href="authentication.html">login</a>
-    <nav class="primary-nav">
-    <button class="nav-button" id="buyExchangeBtn" class="btn"><a href="buy.html">Buy/Exchange</a></button>
-    <button class="nav-button" id="sellBtn"><a href="sell.html">Sell</a></button>
-  </nav>
-   <nav class="secondary-nav">
-   
-    <button class="nav-button" id="requestRentBtn"><a href="requestRent.html">Request/Rent</a></button>
 
-  <button class="nav-button" id="forumBtn">
-  <a href="{% url 'forum:question_list' %}">Forum</a>
-  </button>
-
-  </nav>
-
-  <section class="item-list">
-    <h3 class="style">suggested items -</h3>
-    <div class="item-card">
-      <h3>Wooden Chair</h3>
-      <p>Sturdy and vintage. Looking to trade for books.</p>
+  <!-- Navigation Menu as Buttons -->
+  <nav class="main-nav">
+    <div class="nav-buttons">
+    <a href="{buy.html" class="nav-btn">Buy/Exchange</a>
+    <a href="{% url 'sell' %}" class="nav-btn">Sell</a>
+    <a href="rent.html" class="nav-btn">Request/Rent</a>
+    <a href="{% url 'forum:question_list' %}" class="nav-btn">Forum</a>
+  </div>
+  <!-- Search Results -->
+  {% if search_results %}
+  <section class="items-section">
+    <h2>Search Results</h2>
+    <div class="items-grid">
+      {% for item in search_results %}
+      <div class="item-card">
+        {% if item.image %}
+          <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        {% endif %}
+        <h3>{{ item.title }}</h3>
+        {% if item.price %}
+          <p class="price">₹{{ item.price }}</p>
+        {% endif %}
+        <p class="desc">{{ item.description|truncatewords:15 }}</p>
+        <button class="view-btn">View Details</button>
+      </div>
+      {% endfor %}
     </div>
-    <div class="item-card">
-      <h3>Old Guitar</h3>
-      <p>Needs tuning. Open to barter for electronics.</p>
+  </section>
+  {% endif %}
+
+  <!-- Suggested Items -->
+  <section class="items-section">
+    <h2>Suggested Items</h2>
+    <div class="items-grid">
+      {% for item in suggested_items %}
+      <div class="item-card">
+        {% if item.image %}
+          <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        {% endif %}
+        <h3>{{ item.title }}</h3>
+        {% if item.price %}
+          <p class="price">₹{{ item.price }}</p>
+        {% endif %}
+        <p class="desc">{{ item.description|truncatewords:15 }}</p>
+        <button class="view-btn">View Details</button>
+      </div>
+      {% endfor %}
     </div>
-     
   </section>
 
+  <!-- Floating Buttons -->
   <button class="cart-icon">🛒</button>
-  
-   
-  
-  <button class="to-top" onclick="scrollToTop()"></button>
-
-  
+  <button class="to-top" onclick="scrollToTop()">⬆</button>
 
   <script src="{% static 'js/funct.js' %}"></script>
 </body>
