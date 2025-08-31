@@ -1,61 +1,98 @@
-/* search/static/search/results.css */
-
+/* General Page */
 body {
     font-family: Arial, sans-serif;
+    background: #f9f9f9;
     margin: 0;
     padding: 0;
-    background: #f8f9fa;
     color: #333;
 }
 
-header {
-    background: #004085;
-    color: white;
-    padding: 1rem;
+/* Header */
+.site-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-header h1 {
-    margin: 0;
-}
-
-header nav a {
+    background: #222;
+    padding: 12px 20px;
     color: white;
-    text-decoration: none;
-    margin-right: 1rem;
+}
+
+.logo a {
+    color: white;
+    font-size: 22px;
     font-weight: bold;
+    text-decoration: none;
 }
 
-header nav a:hover {
-    text-decoration: underline;
+.nav-links a {
+    margin-left: 15px;
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+}
+.nav-links a:hover {
+    color: white;
 }
 
+/* Container */
 .container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
 }
 
-ul {
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.query {
+    color: #007BFF;
+}
+
+/* Results */
+.results-list {
     list-style: none;
     padding: 0;
 }
-
-li {
-    margin-bottom: 1rem;
+.result-item {
+    background: white;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
 }
-
-li a {
+.result-title {
+    font-size: 18px;
     font-weight: bold;
-    color: #004085;
+    color: #007BFF;
     text-decoration: none;
 }
-
-li a:hover {
+.result-title:hover {
     text-decoration: underline;
+}
+.result-snippet {
+    margin-top: 8px;
+    color: #555;
+    font-size: 14px;
+}
+
+/* No results */
+.no-results {
+    text-align: center;
+    margin-top: 40px;
+}
+.no-results p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.no-results .btn {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #007BFF;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+.no-results .btn:hover {
+    background: #0056b3;
 }
