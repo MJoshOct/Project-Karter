@@ -84,12 +84,26 @@
         .submit-btn:hover {
             background-color: #43a047;
         }
+        .btn {
+            display: inline-block;
+            background: #868686;
+            color: #ffffff;
+            padding: 0.2rem 1.0rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: #989898;
+        }
     </style>
 </head>
 <body>
 
 <div class="form-container">
     <h2>Sell Your Product</h2>
+    <a href="{% url 'homepage' %}" class="btn">Home</a>
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
         <div class="form-group">
@@ -102,7 +116,7 @@
         </div>
         <div class="form-group">
             <label for="price">Price:</label>
-            <input type="number" id="price" name="price" placeholder="Enter price in USD" required>
+            <input type="number" id="price" name="price" placeholder="Enter price" required>
         </div>
         <div class="form-group">
             <label for="image">Image:</label>
