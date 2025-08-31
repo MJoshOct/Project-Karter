@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from sell.models import Product  # ✅ import from the sell app
+from django.shortcuts import render,get_object_or_404
+from sell.models import Product  
 from django.db.models import QuerySet
 
 def homepage(request):
@@ -10,11 +10,11 @@ def homepage(request):
 
     if query:
         results = Product.objects.filter(title__icontains=query)
-        # Exclude search results from suggestions
+        
         suggestions_qs = suggestions_qs.exclude(id__in=results.values_list("id", flat=True))
 
-    # --- Suggested (randomized, max 10) ---
-    suggested_items = list(suggestions_qs.order_by("?")[:6])
+    
+    suggested_items = list(suggestions_qs.order_by("?")[:20])
 
     return render(
         request,

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ product.title }} - Karter</title>
+  <link rel="stylesheet" href="{% static 'home/style0.css' %}">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo"><a href="/">KarterHub</a></div>
+    <nav class="main-nav">
+      <a href="/" class="nav-btn">Home</a>
+      <a href="{% url 'sell' %}" class="nav-btn">Sell</a>
+      <a href="{% url 'forum:question_list' %}" class="nav-btn">Forum</a>
+    </nav>
+  </header>
+
+  <!-- Product Detail Section -->
+  <main class="product-detail">
+    <h1>{{ product.title }}</h1>
+
+    {% if product.image %}
+      <div class="product-image">
+        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+      </div>
+    {% endif %}
+
+    <div class="product-info">
+      <p>{{ product.description }}</p>
+
+      <p><strong>Transaction Type:</strong> {{ product.get_transaction_type_display }}</p>
+
+      {% if product.price %}
+        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+      {% endif %}
+
+      <p><em>Listed on: {{ product.created_at|date:"F j, Y, g:i a" }}</em></p>
+    </div>
+
+    <div class="actions">
+      <a href="/" class="back-btn">← Back to Homepage</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>license</p>
+  </footer>
+
+</body>
+</html>
