@@ -8,9 +8,19 @@
 </head>
 <body>
 <header>
+  <h2>Forum</h2>
+  
+
+<form method="get" action="{% url 'search:search' %}">
+    <input type="hidden" name="type" value="forum">
+    <input type="text" name="q" placeholder="Search forum...">
+    <button type="submit">Search</button>
+</form>
+</header>
+<header>
     <h1>Forum Questions</h1>
     <a href="{% url 'homepage' %}" class="btn">🏠 Home</a>
-    <a href="{% url 'ask_question' %}" class="btn">➕ Ask a Question</a>
+    <a href="{% url 'forum:ask_question' %}" class="btn">➕ Ask a Question</a>
 </header>
 
 <div class="container">
@@ -18,7 +28,7 @@
         <ul class="question-list">
             {% for question in questions %}
                 <li>
-                    <a href="{% url 'question_detail' question.slug%}" >{{ question.title }}</a><br>
+                    <a href="{% url 'forum:question_detail' question.slug%}" >{{ question.title }}</a><br>
                     <small>Asked by {{ question.user }} on {{ question.created_at|date:"M d, Y H:i" }}</small>
                 </li>
             {% endfor %}

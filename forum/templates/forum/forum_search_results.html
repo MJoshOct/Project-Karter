@@ -1,0 +1,41 @@
+{% extends "question_list.html" %}
+
+{% load static %}
+
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'forum/search_style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="search-container">
+    <h2>🔎 Forum Search Results</h2>
+
+    {% if query %}
+        <p class="search-query">Showing results for: <strong>{{ query }}</strong></p>
+    {% endif %}
+
+    {% if results %}
+        <ul class="search-results">
+            {% for question in results %}
+                <li class="search-item">
+                    <a href="{% url 'forum:question_detail' slug=question.slug %}" class="search-link">
+                        {{ question.title }}
+                    </a>
+                    <p class="search-snippet">
+                        {{ question.body|truncatewords:25 }}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-results">No questions found.</p>
+    {% endif %}
+
+    <div class="back-link">
+        <a href="{% url 'forum:question_list' %}" class="btn">Back to Forum</a>
+    </div>
+</div>
+{% endblock %}
+
+<a href="{% url 'homepage' %}">Back to Home</a>

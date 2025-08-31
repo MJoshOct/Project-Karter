@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>{{ question.title }}</h1>
-    <a href="{% url 'question_list' %}" class="btn btn-primary">🏠 Home</a>
+    <a href="{% url 'forum:question_list' %}" class="btn btn-primary">forum</a>
     <p>{{ question.body }}</p>
     <p><strong>Asked by:</strong> {{ question.author }}</p>
 

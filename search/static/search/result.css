@@ -1,187 +1,61 @@
+/* search/static/search/results.css */
+
 body {
     font-family: Arial, sans-serif;
-    background: #f9f9f9;
     margin: 0;
     padding: 0;
+    background: #f8f9fa;
+    color: #333;
 }
 
-.top-nav {
-    background: #333;
-    padding: 10px;
-    text-align: left;
+header {
+    background: #004085;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.top-nav .home-link {
+header h1 {
+    margin: 0;
+}
+
+header nav a {
     color: white;
     text-decoration: none;
+    margin-right: 1rem;
     font-weight: bold;
-    font-size: 18px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
 }
 
 .container {
-    display: flex;
-    margin: 20px;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 200px;
-    background: #f0f0f0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-.sidebar h3 {
-    margin-top: 0;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin: 8px 0;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-}
-
-.sidebar ul li a:hover {
-    color: #007BFF;
-}
-
-/* Results */
-.results {
-    flex: 1;
-    margin-left: 20px;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
     background: white;
-    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.results h2 {
-    margin-bottom: 20px;
-    font-size: 22px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-}
-
-.results ul {
+ul {
     list-style: none;
     padding: 0;
 }
 
-.result-item {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+li {
+    margin-bottom: 1rem;
 }
 
-.post-title {
-    font-size: 18px;
+li a {
     font-weight: bold;
-    color: #333;
+    color: #004085;
     text-decoration: none;
 }
 
-.post-title:hover {
-    color: #007bff;
+li a:hover {
+    text-decoration: underline;
 }
-
-.post-snippet {
-    margin: 5px 0 0;
-    color: #555;
-    font-size: 14px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

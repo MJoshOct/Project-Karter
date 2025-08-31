@@ -20,7 +20,7 @@ def question_detail(request, slug):
             answer.author = request.user
             answer.question = question
             answer.save()
-            return redirect("question_detail", slug=question.slug)
+            return redirect("forum:question_detail", slug=question.slug)
     else:
         answer_form = AnswerForm()
 
@@ -39,7 +39,22 @@ def ask_question(request):
             question.author = request.user  # safe, since user is logged in
             question.save()
             form.save_m2m()  # for tags
-            return redirect("question_detail", slug=question.slug)
+            return redirect("forum:question_detail", slug=question.slug)
     else:
         form = QuestionForm()
     return render(request, "forum/ask_question.html", {"form": form})
+
+def forum_search(request):
+    query = request.GET.get("q")
+    results = []
+    if query:
+        results = Question.objects.filter(title__icontains=query) | Question.objects.filter(body__icontains=query)
+
+    return render(request, "forum/forum_search_results.html", {
+        "query": query,
+        "results": results,
+        "context_type": "forum" 
+    })
+
+
+

@@ -4,62 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Results</title>
-    <link rel="stylesheet" href="{% static 'search/result.css' %}">
-
+    <link rel="stylesheet" href="{% static 'search/results.css' %}">
 </head>
 <body>
     <header>
+        <h1>Search Results for "{{ query }}"</h1>
         <nav>
-            <a href="{% url 'home' %}">🏠 Home</a>
+            <a href="{% url 'homepage' %}">🏠 Home</a>
+            <a href="{% url 'forum:question_list' %}">💬 Forum</a>
         </nav>
-        <h1>Search Results</h1>
-        <form method="get" action="{% url 'search_results' %}">
-            <input type="text" name="q" placeholder="Search..." value="{{ query }}">
-            <button type="submit">Search</button>
-        </form>
     </header>
 
- 
-<main class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <h2>Categories</h2>
-        <ul>
-            {% for category in categories %}
-                <li>
-                    <a href="{% url 'blog_category' category.pk %}">
-                        {{ category.name }}
-                    </a>
-                </li>
-            {% empty %}
-                <li>No categories available</li>
-            {% endfor %}
-        </ul>
-    </aside>
-
-    <!-- Results -->
-        <section class="results">
-            <h2>
-                {% if query %}
-                  Results for "{{ query }}"
-                {% else %}
-                  All Results
-                {% endif %}
-            </h2>
+    <main class="container">
+        {% if results %}
             <ul>
-                {% for post in results %}
+                {% for item in results %}
                     <li>
-                        <a href="{% url 'blog_detail' post.pk %}">
-                            {{ post.title }}
+                        <a href="{% url 'forum:question_detail' item.slug %}">
+                            {{ item.title }}
                         </a>
-                        <p>{{ post.body|truncatewords:20 }}</p>
+                        <p>{{ item.body|truncatewords:20 }}</p>
                     </li>
-                {% empty %}
-                    <li>No results found</li>
                 {% endfor %}
             </ul>
-        </section>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
     </main>
 </body>
 </html>
-
