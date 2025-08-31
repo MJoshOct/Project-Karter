@@ -45,8 +45,8 @@ INSTALLED_APPS = [
 ]
 
 LOGIN_URL = "/accounts/login/"
-LOGIN_REDIRECT_URL = "/forum/"   
-LOGOUT_REDIRECT_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/PROFILE/"   
+LOGOUT_REDIRECT_URL = "/"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

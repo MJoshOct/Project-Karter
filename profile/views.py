@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.contrib import messages
 from .models import UserProfile
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='signup')  # redirect to signup if not logged in
+@login_required(login_url='login')  # redirect to signup if not logged in
 def profile_view(request):
     if request.method == "POST":
         full_name = request.POST.get("full_name")
@@ -21,6 +22,7 @@ def profile_view(request):
                 "profile_pic": profile_pic
             }
         )
-        return HttpResponse("Profile saved successfully!")
+        messages.success(request, "Profile saved successfully!") 
+        return redirect('profile_view')
 
     return render(request, "kartprofil.html")

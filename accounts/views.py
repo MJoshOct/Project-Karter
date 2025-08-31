@@ -38,7 +38,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect("profile")
+            return redirect("profile_view")
         else:
             messages.error(request, "Invalid username or password.")
             return redirect("login")
@@ -50,7 +50,3 @@ def logout_view(request):
     logout(request)
     return redirect("login")
 
-# Profile View
-@login_required
-def profile_view(request):
-    return render(request, "accounts/profile.html")
