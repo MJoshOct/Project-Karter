@@ -1,0 +1,92 @@
+/* General body */
+body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: #f0f0f0;
+    color: #222;
+    margin: 0;
+    line-height: 1.6;
+    text-align: center; /* center align content */
+}
+
+/* Container */
+body > * {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 1rem;
+    text-align: left; /* restore left alignment for text */
+}
+
+/* Headings */
+h1 {
+    font-size: 1.8rem;
+    margin: 1rem;
+    color: #333;
+    text-align: center;
+}
+h2 {
+    margin-top: 1.5rem;
+    color: #444;
+}
+
+/* Grey Buttons (Forum + Submit Answer) */
+.btn,
+form button {
+    display: inline-block;
+    background: #d9d9d9;   /* flat grey */
+    color: #222;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    margin: 0.5rem 0.3rem;
+}
+.btn:hover,
+form button:hover {
+    background: #c4c4c4; /* darker grey on hover */
+}
+
+/* Question body */
+p {
+    background: #e9e9e9;
+    padding: 0.8rem 1rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+}
+
+/* Answers Section */
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    background: #e9e9e9;
+    border: 1px solid #d0d0d0;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+}
+ul li em {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* Form */
+form {
+    background: #e9e9e9;
+    padding: 1rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+}
+form input,
+form textarea {
+    width: 100%;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: #f8f8f8;
+}
