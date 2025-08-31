@@ -1,0 +1,61 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f3efef25;
+    margin:10;
+    padding: 10px;
+    color:rgb(15, 103, 119);
+}
+
+/* Navbar or header */
+head {
+    background: #007bff;
+    color: rgb(201, 189, 189);
+    padding: 15px;
+    text-align: center;
+}
+header{
+    color:darkcyan;
+    background-color: rgb(201, 198, 193);
+    padding:20px;
+    margin:10px;
+}
+/* Buttons */
+a.btn, button {
+    background: #007bff;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    align-content:center ;
+    transition: background 0.3s ease;
+}
+button[type="submit"] {
+  background-color: #007BFF;       
+  color: white;                    
+  border: none;                    
+  padding: 10px 20px;              
+  font-size: 16px;                 
+  border-radius: 5px;              
+  cursor: pointer;                 
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;       
+}
+
+
+a.btn:hover, button:hover {
+    background: #827474;
+}
+
+/* Containers */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(158, 155, 155, 0.1);
+}
