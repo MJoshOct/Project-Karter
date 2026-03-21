@@ -3,6 +3,6 @@ This just a small university project taken up by few students of Kalinga Institu
 
 Collaborators:
 
--Alok Kumar
--Mayank Joshua Kullu
--Souvik Mandal
+Alok Kumar
+Mayank Joshua Kullu
+Souvik Mandal
