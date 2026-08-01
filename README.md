@@ -1,8 +1,23 @@
-# Project-Karter
-This just a small university project taken up by few students of Kalinga Institute Of Industrial Technology. This project aims to introduce a listing, resale and exchange platform along with a forum for starting discussions. The aim is to create a framework for such a system not to launch it yet first.
+# Project Karter
 
-Collaborators:
+A small university project by students at Kalinga Institute of Industrial 
+Technology (KIIT). It provides a listing, resale, and exchange platform for 
+students, along with a discussion forum for related conversations.
 
-Alok Kumar
-Mayank Joshua Kullu
-Souvik Mandal
+This is a framework/prototype — not intended for production launch at this stage.
+
+## Features
+- User authentication (login required for forum access)
+- Listing management (post, browse, edit listings)
+- Search and filter functionality
+- Discussion forum with posts and replies
+
+## Tech Stack
+- Python
+- Django
+- REST API
+- SQLite
+
+## License
+  This project is not licensed for reuse. All rights reserved. 
+  Shared here for portfolio/demonstration purposes only.
