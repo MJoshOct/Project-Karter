@@ -18,6 +18,11 @@ This is a framework/prototype — not intended for production launch at this sta
 - REST API
 - SQLite
 
+## Note
+This project is shared for demonstration purposes. It is not currently in a 
+clone-and-run state (missing setup docs, environment config, etc.) and is not 
+actively maintained.
+
 ## License
   This project is not licensed for reuse. All rights reserved. 
   Shared here for portfolio/demonstration purposes only.
