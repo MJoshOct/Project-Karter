@@ -1,10 +1,8 @@
 # Project Karter
 
-A small university project by students at Kalinga Institute of Industrial 
-Technology (KIIT). It provides a listing, resale, and exchange platform for 
+A project by students at Kalinga Institute of Industrial 
+Technology (KIIT) University. It provides a listing, resale, and exchange platform for 
 students, along with a discussion forum for related conversations.
-
-This is a framework/prototype — not intended for production launch at this stage.
 
 ## Features
 - User authentication (login required for forum access)
@@ -17,11 +15,6 @@ This is a framework/prototype — not intended for production launch at this sta
 - Django
 - REST API
 - SQLite
-
-## Note
-This project is shared for demonstration purposes. It is not currently in a 
-clone-and-run state (missing setup docs, environment config, etc.) and is not 
-actively maintained.
 
 ## License
   This project is not licensed for reuse. All rights reserved. 
